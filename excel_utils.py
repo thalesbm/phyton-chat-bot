@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 from logic import analyse
 
-
 def readExcel(api_key):
     # upload documents
     st.header("Chat para analisar documentos")
@@ -32,7 +31,8 @@ def readExcel(api_key):
 
             formatInfo(df, file)
 
-            # analyse(api_key, text, user_question)
+            text = df.to_string(index=False)
+            analyse(api_key, text, user_question)
 
 
 def formatInfo(df, file):
@@ -42,12 +42,12 @@ def formatInfo(df, file):
 
     # Remover símbolo de euro e converter para float nas colunas numéricas
     for col in df.columns[1:]:
-        df[col] = df[col].replace('[€]', '', regex=True)
+        df[col] = df[col].replace('[€]', '', regex=True)#.replace('', '0').astype(float)
 
     st.write("Planilha formatada: " + file.name)
     st.dataframe(df)
 
-def analyse(df):
+def analyse111(df):
     # Garante que as colunas estão em formato numérico
     #df['food'] = pd.to_numeric(df['food'], errors='coerce')
     #df['beer'] = pd.to_numeric(df['beer'], errors='coerce')
@@ -59,14 +59,6 @@ def analyse(df):
     # Usa a primeira linha como cabeçalho
     # df.columns = df.iloc[0]
     # df = df.drop(index=0).reset_index(drop=True)
-
-    # remove linhas e colunas em branco
-    df.dropna(how="all", inplace=True)
-    df.dropna(axis=1, how="all", inplace=True)
-
-    # Remover símbolo de euro e converter para float nas colunas numéricas
-    for col in df.columns[1:]:
-        df[col] = df[col].replace('[€]', '', regex=True)
 
     # Garante que todas as colunas tenham nomes válidos
     # df.columns = [str(col).strip() if pd.notna(col) else f"col_{i}" for i, col in enumerate(df.columns)]
