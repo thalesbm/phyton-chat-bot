@@ -1,8 +1,7 @@
 import os
 
 from dotenv import load_dotenv
-from types.excel_utils import readExcel
-from types.pdf_utils import readPDF
+from excel_utils import readExcel
 
 # load api key
 load_dotenv()
