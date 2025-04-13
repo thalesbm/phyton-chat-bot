@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from main_logic import analyse
+from logic import analyse
 
 def readExcel(api_key):
     # upload documents

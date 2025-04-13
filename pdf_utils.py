@@ -1,6 +1,6 @@
 import streamlit as st
 from PyPDF2 import PdfReader
-from main_logic import analyse
+from logic import analyse
 
 def readPDF(api_key):
     # upload documents
