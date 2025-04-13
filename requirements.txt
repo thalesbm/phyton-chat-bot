@@ -1,0 +1,15 @@
+streamlit
+PyPDF2
+langchain
+openai
+tiktoken
+chromadb
+faiss-cpu
+pandas
+openpyxl
+python-dotenv  # útil para ler chaves da .env
+
+# pip3 install -r requirements.txt
+
+# python3 -m venv .venv
+# source .venv/bin/activate
